@@ -194,3 +194,51 @@ skillSearch.addEventListener("input", updateSkills);
 skillCategory.addEventListener("change", updateSkills);
 
 updateSkills();
+
+function createCounter() {
+    let count = 0;
+
+    return function () {
+        count += 1;
+        return count;
+    };
+}
+
+function findSkill(skillItems, skillName) {
+    const cleanName = skillName.trim().toLowerCase();
+
+    if (cleanName === "") {
+        throw new Error("Please type a skill name.");
+    }
+
+    const skill = skillItems.find((item) => item.name.toLowerCase() === cleanName);
+
+    if (skill === undefined) {
+        throw new Error(`"${skillName.trim()}" is not in my skill list. Check the spelling and try again.`);
+    }
+
+    return skill;
+}
+
+const lookupForm = document.getElementById("lookup-form");
+const lookupInput = document.getElementById("lookup-input");
+const lookupMessage = document.getElementById("lookup-message");
+const nextLookupNumber = createCounter();
+
+function handleLookup(event) {
+    event.preventDefault();
+    const lookupNumber = nextLookupNumber();
+
+    try {
+        const { name, category, level } = findSkill(profile.skills, lookupInput.value);
+        lookupMessage.textContent = `Lookup ${lookupNumber}: ${name} is in ${category}. My level is ${level} out of 10 (${getLevelLabel(level)}).`;
+        lookupMessage.className = "message message--success";
+    } catch (error) {
+        lookupMessage.textContent = `Lookup ${lookupNumber}: ${error.message}`;
+        lookupMessage.className = "message message--error";
+    } finally {
+        lookupInput.value = "";
+    }
+}
+
+lookupForm.addEventListener("submit", handleLookup);
