@@ -310,3 +310,36 @@ function buildAchievementHtml({ title, issuer, year }) {
 
 renderList(document.getElementById("project-list"), profile.projects, buildProjectHtml);
 renderList(document.getElementById("achievement-list"), profile.achievements, buildAchievementHtml);
+
+const contactLabels = {
+    email: "Email",
+    phone: "Phone",
+    linkedin: "LinkedIn",
+    github: "GitHub"
+};
+
+function getContactLink(key, value) {
+    switch (key) {
+        case "email":
+            return `mailto:${value}`;
+        case "phone":
+            return `tel:${value.split(" ").join("")}`;
+        default:
+            return value;
+    }
+}
+
+function buildContactHtml(contact) {
+    let html = "";
+
+    for (const [key, value] of Object.entries(contact)) {
+        const label = contactLabels[key] ?? key;
+        const target = value.startsWith("https://") ? ' target="_blank"' : "";
+        html += `<li><strong>${label}:</strong> <a href="${getContactLink(key, value)}"${target}>${value}</a></li>`;
+    }
+
+    return html;
+}
+
+document.getElementById("contact-list").innerHTML = buildContactHtml(profile.contact);
+document.getElementById("current-year").textContent = new Date().getFullYear();
