@@ -32,4 +32,51 @@ const profile = {
         { name: "Prompt Engineering", category: "AI and ML", level: 7 },
         { name: "Git", category: "Tools", level: 8 }
     ],
+    education: [
+        {
+            degree: "Bachelor of Science in Computer Science",
+            school: "Namal University Mianwali",
+            startYear: 2022,
+            endYear: 2026,
+            coursework: [
+                "Programming Fundamentals",
+                "Object Oriented Programming",
+                "Data Structures and Algorithms",
+                "Design and Analysis of Algorithms",
+                "Software Engineering",
+                "Database Systems",
+                "Operating Systems",
+                "Artificial Intelligence",
+                "Machine Learning",
+                "Cloud Computing"
+            ]
+        }
+    ],
+    experience: [
+        {
+            title: "DevOps Intern",
+            company: "Ebryx Private Limited",
+            city: "Lahore",
+            period: "Sep 2025 - Oct 2025",
+            months: 2,
+            duties: [
+                "Worked with software engineers using Git-based workflows and Agile practices.",
+                "Automated deployment tasks with Bash scripting on Linux.",
+                "Helped deploy applications on Microsoft Azure and AWS.",
+                "Worked with Docker, CI/CD workflows and deployment troubleshooting."
+            ]
+        },
+        {
+            title: "Teaching Assistant",
+            company: "Namal University Mianwali",
+            city: "Mianwali",
+            period: "Oct 2023 - Nov 2024",
+            months: 14,
+            duties: [
+                "Helped students in Programming Fundamentals and Object-Oriented Programming.",
+                "Guided students in debugging C++ programs and using data structures and algorithms.",
+                "Evaluated programming assignments and gave technical feedback."
+            ]
+        }
+    ],
 };
