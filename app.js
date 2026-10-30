@@ -141,3 +141,56 @@ function buildSkillHtml({ name, category, level }) {
 const skillList = document.getElementById("skill-list");
 
 renderList(skillList, sortByLevel(profile.skills), buildSkillHtml);
+
+const skillSearch = document.getElementById("skill-search");
+const skillCategory = document.getElementById("skill-category");
+const skillMessage = document.getElementById("skill-message");
+const skillAverage = document.getElementById("skill-average");
+
+function getCategories(skillItems) {
+    return skillItems.reduce((categories, skill) => {
+        return categories.includes(skill.category) ? categories : [...categories, skill.category];
+    }, []);
+}
+
+function buildOptionHtml(category) {
+    return `<option value="${category}">${category}</option>`;
+}
+
+function filterSkills(skillItems, searchText, category) {
+    const text = searchText.trim().toLowerCase();
+
+    return skillItems.filter((skill) => {
+        const matchesText = skill.name.toLowerCase().includes(text);
+        const matchesCategory = category === "all" || skill.category === category;
+        return matchesText && matchesCategory;
+    });
+}
+
+function getResultMessage(count) {
+    if (count === 0) {
+        return "No skills match your search.";
+    }
+    if (count === 1) {
+        return "1 skill found.";
+    }
+    return `${count} skills found.`;
+}
+
+function updateSkills() {
+    const matches = filterSkills(profile.skills, skillSearch.value, skillCategory.value);
+    const sortedMatches = sortByLevel(matches);
+
+    renderList(skillList, sortedMatches, buildSkillHtml);
+    skillMessage.textContent = getResultMessage(sortedMatches.length);
+    skillAverage.textContent = sortedMatches.length === 0
+        ? ""
+        : `Average level of the skills shown: ${calculateAverageLevel(sortedMatches)} / 10`;
+}
+
+skillCategory.innerHTML = `<option value="all">All categories</option>${getCategories(profile.skills).map(buildOptionHtml).join("")}`;
+
+skillSearch.addEventListener("input", updateSkills);
+skillCategory.addEventListener("change", updateSkills);
+
+updateSkills();
