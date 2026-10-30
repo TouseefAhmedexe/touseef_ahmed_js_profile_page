@@ -8,7 +8,7 @@ filter and a skill lookup. Task 11 of my Bloomrix internship.
 - style.css - the styling
 - data.js - the profile object (data only)
 - app.js - the code that shows the data and handles the search, lookup and random skill
-- images/profile.jpg - profile photo
+- images/profile.jpg - profile photo 
 
 ## How the scripts are loaded
 Both scripts use defer. data.js is first, so the profile object exists when app.js runs.
