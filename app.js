@@ -113,3 +113,31 @@ function renderStats(person) {
 }
 
 renderStats(profile);
+
+function sortByLevel(skillItems) {
+    return [...skillItems].sort((first, second) => second.level - first.level);
+}
+
+function getLevelLabel(level) {
+    if (level >= 8) {
+        return "Strong";
+    }
+    if (level >= 6) {
+        return "Good";
+    }
+    return "Learning";
+}
+
+function buildSkillHtml({ name, category, level }) {
+    return `
+        <li class="skill-item">
+            <span class="skill-name">${name}</span>
+            <span class="skill-label">Level ${level} / 10: ${getLevelLabel(level)}</span>
+            <span class="skill-category">${category}</span>
+            <meter class="skill-meter" min="0" max="10" low="4" high="7" optimum="10" value="${level}">${level} out of 10</meter>
+        </li>`;
+}
+
+const skillList = document.getElementById("skill-list");
+
+renderList(skillList, sortByLevel(profile.skills), buildSkillHtml);
