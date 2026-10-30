@@ -242,3 +242,16 @@ function handleLookup(event) {
 }
 
 lookupForm.addEventListener("submit", handleLookup);
+
+function getRandomItem(items) {
+    const index = Math.floor(Math.random() * items.length);
+    return items[index];
+}
+
+const randomButton = document.getElementById("random-button");
+const randomOutput = document.getElementById("random-output");
+
+randomButton.addEventListener("click", () => {
+    const { name, category, level } = getRandomItem(profile.skills);
+    randomOutput.textContent = `${name} (${category}), level ${level} out of 10.`;
+});
