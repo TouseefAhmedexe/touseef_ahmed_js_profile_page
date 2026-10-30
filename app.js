@@ -255,3 +255,28 @@ randomButton.addEventListener("click", () => {
     const { name, category, level } = getRandomItem(profile.skills);
     randomOutput.textContent = `${name} (${category}), level ${level} out of 10.`;
 });
+
+function buildEducationHtml({ degree, school, startYear, endYear, coursework }) {
+    const status = endYear <= new Date().getFullYear() ? "Completed" : "In progress";
+
+    return `
+        <article class="card">
+            <h3>${degree}</h3>
+            <p class="card-meta">${school} | ${startYear} - ${endYear} | ${status}</p>
+            <p><strong>Relevant coursework:</strong> ${coursework.join(", ")}</p>
+        </article>`;
+}
+
+function buildExperienceHtml({ title, company, city, period, months, duties }) {
+    const dutyItems = duties.map((duty) => `<li>${duty}</li>`).join("");
+
+    return `
+        <article class="card">
+            <h3>${title}</h3>
+            <p class="card-meta">${company}, ${city} | ${period} | ${formatExperience(months)}</p>
+            <ul>${dutyItems}</ul>
+        </article>`;
+}
+
+renderList(document.getElementById("education-list"), profile.education, buildEducationHtml);
+renderList(document.getElementById("experience-list"), profile.experience, buildExperienceHtml);
