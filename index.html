@@ -65,6 +65,26 @@
             <p id="skill-average"></p>
             <ul class="skill-list" id="skill-list"></ul>
         </section>
+
+        <section class="section" id="lookup">
+            <h2>Skill Lookup</h2>
+            <p>Type the exact name of a skill to see its category and level.</p>
+
+            <form id="lookup-form">
+                <div class="field">
+                    <label for="lookup-input">Skill name</label>
+                    <input type="text" id="lookup-input" name="lookup_input" placeholder="Example: Docker" autocomplete="off">
+                </div>
+
+                <p><button type="submit">Look up skill</button></p>
+            </form>
+
+            <p class="message" id="lookup-message"></p>
+
+            <h3>Random Skill</h3>
+            <p><button type="button" id="random-button">Show a random skill</button></p>
+            <p class="message" id="random-output"></p>
+        </section>
     </main>
 </body>
 
