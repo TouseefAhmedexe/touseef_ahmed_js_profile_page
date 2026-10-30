@@ -280,3 +280,33 @@ function buildExperienceHtml({ title, company, city, period, months, duties }) {
 
 renderList(document.getElementById("education-list"), profile.education, buildEducationHtml);
 renderList(document.getElementById("experience-list"), profile.experience, buildExperienceHtml);
+
+function getProjectTypeLabel(type) {
+    switch (type) {
+        case "final-year":
+            return "Final year project";
+        case "university":
+            return "University project";
+        default:
+            return "Project";
+    }
+}
+
+function buildProjectHtml({ name, description, tech, period, type }) {
+    const techTags = tech.map((item) => `<li class="tag">${item}</li>`).join("");
+
+    return `
+        <article class="card">
+            <h3>${name}</h3>
+            <p class="card-meta">${getProjectTypeLabel(type)} | ${period}</p>
+            <p>${description}</p>
+            <ul class="tag-list">${techTags}</ul>
+        </article>`;
+}
+
+function buildAchievementHtml({ title, issuer, year }) {
+    return `<li><strong>${title}</strong>, ${issuer} (${year})</li>`;
+}
+
+renderList(document.getElementById("project-list"), profile.projects, buildProjectHtml);
+renderList(document.getElementById("achievement-list"), profile.achievements, buildAchievementHtml);
