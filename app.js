@@ -62,3 +62,54 @@ function renderAbout(person) {
 }
 
 renderAbout(profile);
+
+function renderList(container, items, buildHtml) {
+    container.innerHTML = items.map(buildHtml).join("");
+}
+
+function calculateAverageLevel(skillItems) {
+    if (skillItems.length === 0) {
+        return 0;
+    }
+
+    const total = skillItems.reduce((sum, skill) => sum + skill.level, 0);
+    return Math.round((total / skillItems.length) * 10) / 10;
+}
+
+function countByCategory(skillItems) {
+    return skillItems.reduce((counts, skill) => {
+        return { ...counts, [skill.category]: (counts[skill.category] ?? 0) + 1 };
+    }, {});
+}
+
+function buildStatHtml({ label, value }) {
+    return `<div class="stat-card"><span class="stat-value">${value}</span><span class="stat-label">${label}</span></div>`;
+}
+
+function buildCategoryHtml([category, count]) {
+    return `<li class="tag">${category}: ${count}</li>`;
+}
+
+function renderStats(person) {
+    const { skills, experience, projects, achievements } = person;
+    const levels = skills.map((skill) => skill.level);
+    const highestLevel = Math.max(...levels);
+    const bestSkills = skills
+        .filter((skill) => skill.level === highestLevel)
+        .map((skill) => skill.name)
+        .join(", ");
+
+    const stats = [
+        { label: "Skills", value: skills.length },
+        { label: "Average level", value: `${calculateAverageLevel(skills)} / 10` },
+        { label: `Highest level (${bestSkills})`, value: `${highestLevel} / 10` },
+        { label: "Experience", value: formatExperience(getTotalMonths(experience)) },
+        { label: "Projects", value: projects.length },
+        { label: "Awards", value: achievements.length }
+    ];
+
+    renderList(document.getElementById("stat-grid"), stats, buildStatHtml);
+    renderList(document.getElementById("category-counts"), Object.entries(countByCategory(skills)), buildCategoryHtml);
+}
+
+renderStats(profile);
