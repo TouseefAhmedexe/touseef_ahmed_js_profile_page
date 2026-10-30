@@ -44,6 +44,27 @@
             <h3>Skills by Category</h3>
             <ul class="tag-list" id="category-counts"></ul>
         </section>
+
+        <section class="section" id="skills">
+            <h2>Skills</h2>
+            <p>Skill levels are my own ratings from 1 to 10. Search by name or choose a category.</p>
+
+            <div class="filter-row">
+                <div class="field">
+                    <label for="skill-search">Search skills</label>
+                    <input type="search" id="skill-search" name="skill_search" placeholder="Example: Python" autocomplete="off">
+                </div>
+
+                <div class="field">
+                    <label for="skill-category">Category</label>
+                    <select id="skill-category" name="skill_category"></select>
+                </div>
+            </div>
+
+            <p class="message" id="skill-message"></p>
+            <p id="skill-average"></p>
+            <ul class="skill-list" id="skill-list"></ul>
+        </section>
     </main>
 </body>
 
