@@ -347,3 +347,25 @@ button:active {
     width: 100%;
 }
 
+
+.site-footer {
+    background-color: var(--color-primary-dark);
+    color: white;
+    padding: var(--space-lg) var(--space-md);
+    text-align: center;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto;
+        transition: none;
+    }
+}
+
