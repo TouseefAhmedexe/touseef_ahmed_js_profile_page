@@ -79,4 +79,56 @@ const profile = {
             ]
         }
     ],
+    projects: [
+        {
+            name: "IntelliFYP",
+            description: "An AI-powered web application that automates final year project allocation, supervision, evaluation and archival.",
+            tech: ["C#", ".NET 9", "Angular 20", "Python", "FastAPI", "SQL Server", "Docker", "Kubernetes"],
+            period: "Sep 2025 - Jul 2026",
+            type: "final-year"
+        },
+        {
+            name: "Azure Shop",
+            description: "A cloud-based e-commerce application with role-based access control.",
+            tech: ["C#", ".NET 9", "Angular", "SQL Server", "Azure"],
+            period: "Feb 2025 - May 2025",
+            type: "university"
+        },
+        {
+            name: "Parallel Web Server Logs Analyzer",
+            description: "A Python log analyzer that processes more than one million entries with multiprocessing.",
+            tech: ["Python", "Multiprocessing"],
+            period: "Feb 2025 - May 2025",
+            type: "university"
+        },
+        {
+            name: "Movie Genre Classifier",
+            description: "A machine learning web service that classifies movie genres with 87% accuracy.",
+            tech: ["Python", "Azure ML", "Azure App Service"],
+            period: "May 2025 - Jun 2025",
+            type: "university"
+        },
+        {
+            name: "Interactive Ludo Game Engine",
+            description: "A graphical Ludo game with graph-based path traversal and heuristic AI.",
+            tech: ["C++", "OpenGL"],
+            period: "May 2025 - Jun 2025",
+            type: "university"
+        },
+        {
+            name: "Student Management System",
+            description: "A console application with file handling, searching, sorting and CRUD operations.",
+            tech: ["C++"],
+            period: "Feb 2023 - May 2023",
+            type: "university"
+        }
+    ],
+    achievements: [
+        { title: "Full Merit-Based Scholarship", issuer: "Namal University", year: 2022 },
+        { title: "Amal Fellowship, Stanford-funded Career Prep Program", issuer: "Amal Academy", year: 2024 },
+        { title: "Best Mega Project Award, Clothing with Dignity", issuer: "Amal Academy", year: 2024 },
+        { title: "Aspire Leadership Certificate, Harvard-sponsored Global Fellowship", issuer: "Aspire", year: 2024 },
+        { title: "Best Final Year Project Award Winner, Open House", issuer: "Namal University", year: 2026 },
+        { title: "Best Final Year Project Video Award Runner Up, Open House", issuer: "Namal University", year: 2026 }
+    ],
 };
