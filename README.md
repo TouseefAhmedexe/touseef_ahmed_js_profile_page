@@ -20,7 +20,7 @@ Both scripts use defer. data.js is first, so the profile object exists when app.
 - Skill lookup finds a skill by name. It throws an error for an empty or unknown name, and
   try, catch and finally show a friendly message.
 - The random skill button uses Math.random.
-- Skill levels are my own ratings from 1 to 10. The average, the highest level and the level
+- Skill levels are my own given dummy ratings from 1 to 10. The average, the highest level and the level
   labels are calculated from them.
 - Experience is calculated from the months of each job.
 
